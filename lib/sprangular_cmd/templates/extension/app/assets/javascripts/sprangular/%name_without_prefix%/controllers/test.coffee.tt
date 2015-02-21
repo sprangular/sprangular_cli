@@ -1,0 +1,3 @@
+angular.module('Sprangular.<%= module_name %>')
+  .controller 'TestCtrl', ($scope) ->
+    $scope.message = "Hello World!"

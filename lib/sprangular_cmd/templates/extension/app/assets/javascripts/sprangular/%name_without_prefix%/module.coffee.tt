@@ -1,0 +1,1 @@
+angular.module('Sprangular.<%= module_name %>', ['Sprangular'])

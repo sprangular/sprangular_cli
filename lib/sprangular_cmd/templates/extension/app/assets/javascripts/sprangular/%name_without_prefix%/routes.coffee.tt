@@ -1,0 +1,6 @@
+angular.module('Sprangular.<%= module_name %>')
+  .config ($routeProvider) ->
+
+    $routeProvider.when '/test',
+      controller: 'TestCtrl'
+      templateUrl: 'test/index.html'
