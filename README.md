@@ -1,6 +1,6 @@
-# SprangularCmd
+# Sprangular Utility
 
-TODO: Write a gem description
+A tool for creating sprangular extensions and apps.
 
 ## Installation
 
