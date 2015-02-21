@@ -89,6 +89,8 @@ module SprangularCli
 
     def add_gems
       inside @app_path do
+        prepend_file 'Gemfile', "source 'https://rails-assets.org'\n", verbose: false
+
         gem 'spree_core',        @spree_gem_options
         gem 'spree_api',         @spree_gem_options
         gem 'spree_backend',     @spree_gem_options
