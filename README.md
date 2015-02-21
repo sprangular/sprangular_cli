@@ -20,6 +20,7 @@ sprangular extension example
 ### Setup an application
 
 ```shell
+cd my-rails-app
 sprangular install
 ```
 
