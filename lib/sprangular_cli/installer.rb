@@ -131,6 +131,12 @@ module SprangularCli
       end
     end
 
+    def initialize_sprangular
+      inside @app_path do
+        run "rails generate sprangular:install", verbose: false
+      end
+    end
+
     private
 
       def gem(name, gem_options={})
