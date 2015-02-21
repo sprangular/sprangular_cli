@@ -1,9 +1,9 @@
 # coding: utf-8
-require_relative 'lib/sprangular_cmd/version'
+require_relative 'lib/sprangular_cli/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "sprangular_cmd"
-  spec.version       = SprangularCmd::VERSION
+  spec.name          = "sprangular_cli"
+  spec.version       = SprangularCli::VERSION
   spec.authors       = ["Josh Nussbaum"]
   spec.email         = ["joshnuss@gmail.com"]
   spec.description   = %q{Create sprangular extensions}

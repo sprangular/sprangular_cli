@@ -1,2 +1,2 @@
 #!/usr/bin/env ruby
-require 'sprangular_cmd'
+require 'sprangular_cli'

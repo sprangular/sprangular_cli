@@ -1,4 +1,4 @@
-module SprangularCmd
+module SprangularCli
 
   class Extension < Thor::Group
     include Thor::Actions

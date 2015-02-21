@@ -1,4 +1,4 @@
-require "sprangular_cmd/version"
+require "sprangular_cli/version"
 require 'thor'
 require 'thor/group'
 
@@ -13,13 +13,13 @@ extension:\t create an extension (arguments: <extension-name>)
 install:\t install sprangular (arguments: <site-name>|.)
 EOS
   when 'version', '-v', '--version'
-    puts SprangularCmd::VERSION
+    puts SprangularCli::VERSION
   when 'extension'
     ARGV.shift
-    require 'sprangular_cmd/extension'
-    SprangularCmd::Extension.start
+    require 'sprangular_cli/extension'
+    SprangularCli::Extension.start
   else
     ARGV.shift
-    require 'sprangular_cmd/installer'
-    SprangularCmd::Installer.start
+    require 'sprangular_cli/installer'
+    SprangularCli::Installer.start
 end

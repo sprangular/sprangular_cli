@@ -1,7 +1,7 @@
 require 'rbconfig'
 require 'active_support/core_ext/string'
 
-module SprangularCmd
+module SprangularCli
 
   class Installer < Thor::Group
     include Thor::Actions
@@ -25,18 +25,15 @@ module SprangularCmd
     class_option :branch, type: :string, desc: 'Spree gem git branch'
     class_option :tag, type: :string, desc: 'Spree gem git tag'
 
-    def verify_rails
-      unless rails_project?
-        say "#{@app_path} is not a rails project."
-        exit 1
-      end
-    end
-
     def verify_image_magick
       unless image_magick_installed?
         say "Image magick must be installed."
         exit 1
       end
+    end
+
+    def verify_rails
+      create_rails_app unless rails_project?
     end
 
     def prepare_options
@@ -53,7 +50,7 @@ module SprangularCmd
       elsif options[:version]
         @spree_gem_options[:version] = options[:version]
       else
-        version = Gem.loaded_specs['spree_cmd'].version
+        version = '2.4'
         @spree_gem_options[:version] = version.to_s
       end
 
@@ -95,14 +92,6 @@ module SprangularCmd
         gem 'spree_api',         @spree_gem_options
         gem 'spree_backend',     @spree_gem_options
         gem 'spree_sample',      @spree_gem_options
-        gem 'spree_gateway',     @spree_gem_options
-        gem 'spree_auth_devise', @spree_gem_options
-
-        if options[:edge]
-          gem :sprangular, github: 'sprangular/sprangular'
-        else
-          gem :sprangular, '0.1'
-        end
 
         if @install_default_gateways && @spree_gem_options[:branch]
           gem :spree_gateway, github: 'spree/spree_gateway', branch: @spree_gem_options[:branch]
@@ -114,6 +103,12 @@ module SprangularCmd
           gem :spree_auth_devise, github: 'spree/spree_auth_devise', branch: @spree_gem_options[:branch]
         elsif @install_default_auth
           gem :spree_auth_devise, github: 'spree/spree_auth_devise', branch: '2-4-stable'
+        end
+
+        if options[:edge]
+          gem :sprangular, github: 'sprangular/sprangular'
+        else
+          gem :sprangular, version: '0.1'
         end
 
         run 'bundle install', capture: true
@@ -169,7 +164,7 @@ module SprangularCmd
       def create_rails_app
         say :create, @app_path
 
-        rails_cmd = "rails new #{@app_path} --skip-bundle"
+        rails_cmd = "rails new #{@app_path} --skip-test-unit --skip-bundle"
         rails_cmd << " -m #{options[:template]}" if options[:template]
         rails_cmd << " -d #{options[:database]}" if options[:database]
         run(rails_cmd)
