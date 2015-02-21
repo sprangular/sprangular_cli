@@ -6,7 +6,7 @@ A tool for creating sprangular extensions and setting up apps.
 
 
 ```shell
-gem install sprangular_cmd
+gem install sprangular_cli
 ```
 
 ## Usage
