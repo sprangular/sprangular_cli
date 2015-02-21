@@ -15,7 +15,8 @@ module SprangularCli
     class_option :skip_install_data, type: :boolean, default: false,
                  desc: 'Skip running migrations and loading seed and sample data'
 
-    class_option :version, type: :string, desc: 'Sprangular Version to use', default: '0.1'
+    class_option :version, type: :string, desc: 'Sprangular version to use', default: '0.0.1'
+    class_option :spree_version, type: :string, desc: 'Spree version to use', default: '2.4'
 
     class_option :edge, type: :boolean
 
@@ -47,8 +48,8 @@ module SprangularCli
         @spree_gem_options[:git] = options[:git]
         @spree_gem_options[:ref] = options[:ref] if options[:ref]
         @spree_gem_options[:tag] = options[:tag] if options[:tag]
-      elsif options[:version]
-        @spree_gem_options[:version] = options[:version]
+      elsif options[:spree_version]
+        @spree_gem_options[:version] = options[:spree_version]
       else
         version = '2.4'
         @spree_gem_options[:version] = version.to_s
@@ -108,7 +109,7 @@ module SprangularCli
         if options[:edge]
           gem :sprangular, github: 'sprangular/sprangular'
         else
-          gem :sprangular, version: '0.1'
+          gem :sprangular, version: options[:version]
         end
 
         run 'bundle install', capture: true
@@ -131,6 +132,7 @@ module SprangularCli
     private
 
       def gem(name, gem_options={})
+        gem_options = gem_options.dup
         say_status :gemfile, name
         parts = ["'#{name}'"]
         parts << ["'#{gem_options.delete(:version)}'"] if gem_options[:version]
