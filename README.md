@@ -1,6 +1,6 @@
 # Sprangular Utility
 
-A tool for creating sprangular extensions and apps.
+A tool for creating sprangular extensions and setting up apps.
 
 ## Installation
 
@@ -11,10 +11,16 @@ gem install sprangular_cmd
 
 ## Usage
 
-### Creating an extension
+### Create an extension
 
 ```shell
 sprangular extension example
+```
+
+### Setup an application
+
+```shell
+sprangular install
 ```
 
 ### Show available commands
