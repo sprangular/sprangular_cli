@@ -1,4 +1,4 @@
-# Sprangular Utility
+# Sprangular CLI Utility
 
 A tool for creating sprangular extensions and setting up apps.
 
