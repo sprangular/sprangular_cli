@@ -4,21 +4,30 @@ TODO: Write a gem description
 
 ## Installation
 
-Add this line to your application's Gemfile:
 
-    gem 'sprangular_cmd'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install sprangular_cmd
+```shell
+gem install sprangular_cmd
+```
 
 ## Usage
 
-TODO: Write usage instructions here
+### Creating an extension
+
+```shell
+sprangular extension example
+```
+
+### Show available commands
+
+```shell
+sprangular help
+```
+
+### Show version
+
+```shell
+sprangular -v
+```
 
 ## Contributing
 
