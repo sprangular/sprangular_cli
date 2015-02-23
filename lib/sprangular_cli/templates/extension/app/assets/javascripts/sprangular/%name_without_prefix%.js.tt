@@ -1,4 +1,4 @@
-//= require <%= name_without_prefix %>/module
-//= require <%= name_without_prefix %>/routes
-//= require_tree <%= name_without_prefix %>/controllers
-//= require_tree <%= name_without_prefix %>/services
+//= require ./<%= name_without_prefix %>/module
+//= require ./<%= name_without_prefix %>/routes
+//= require_tree ./<%= name_without_prefix %>/controllers
+//= require_tree ./<%= name_without_prefix %>/services
