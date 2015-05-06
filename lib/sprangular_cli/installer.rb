@@ -15,7 +15,7 @@ module SprangularCli
     class_option :skip_install_data, type: :boolean, default: false,
                  desc: 'Skip running migrations and loading seed and sample data'
 
-    class_option :version, type: :string, desc: 'Sprangular version to use', default: '0.0.1'
+    class_option :version, type: :string, desc: 'Sprangular version to use', default: '0.1.0'
     class_option :spree_version, type: :string, desc: 'Spree version to use', default: '2.4'
 
     class_option :edge, type: :boolean
